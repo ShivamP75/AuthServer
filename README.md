@@ -1,7 +1,7 @@
-### Authentication Server API Documentation
+# Authentication Server API Documentation
 This document provides instructions on how to interact with the Authentication Server API endpoints.
 
-- Register User - To register a new user, send a POST request to /register endpoint with the following JSON payload:
+#### Register User - To register a new user, send a POST request to /register endpoint with the following JSON payload:
 ``` 
 curl --location --request POST 'https://authserver-mczz.onrender.com/register' \
 --header 'Content-Type: application/json' \
@@ -11,15 +11,16 @@ curl --location --request POST 'https://authserver-mczz.onrender.com/register' \
     "email": "your_email@example.com"
 }' 
 ```
-- Request Body - 
+> Request Body - 
     username (String, required): User's username (unique).
     password (String, required): User's password.
     email (String, required): User's email address (unique and validated).
-- Responses - 
+> 
+> Responses - 
     200 OK: User registered successfully.
     400 Bad Request: Invalid request format or user already exists.
 
-- Get Authentication Token - To obtain an authentication token after registration, send a POST request to /get-token endpoint with the following JSON payload:
+#### Get Authentication Token - To obtain an authentication token after registration, send a POST request to /get-token endpoint with the following JSON payload:
 
 ```
 curl --location --request POST 'https://authserver-mczz.onrender.com/get-token' \
@@ -29,31 +30,33 @@ curl --location --request POST 'https://authserver-mczz.onrender.com/get-token' 
     "password": "your_password"
 }'
 ```
-- Request Body - 
+> Request Body - 
         username (String, required): User's username.
         password (String, required): User's password.
-- Responses - 
+> 
+> Responses - 
         200 OK: Authentication successful, returns a JWT token.
         400 Bad Request: Invalid username or password.
 
-- Authenticate Using Token -To authenticate using the obtained token, send a GET request to /authenticate endpoint with the Authorization header containing the token:
+#### Authenticate Using Token -To authenticate using the obtained token, send a GET request to /authenticate endpoint with the Authorization header containing the token:
 ```
 curl --location --request GET 'https://authserver-mczz.onrender.com/authenticate' \
 --header 'Authorization: Bearer your_token'
 ```
 
-- Request Headers - 
+> Request Headers - 
     Authorization (String, required): Bearer token obtained from /get-token.
--  Responses - 
+> 
+> Responses - 
     200 OK: Token is valid.
     401 Unauthorized: Token is invalid or expired.
-- Error Handling
-- Custom Error Responses - 
+> 
+> Custom Error Responses - 
     400 Bad Request: Invalid request format or existing user.
     401 Unauthorized: Invalid or expired token.
 
-Models
-SignupRequest
+### Models
+###### SignupRequest
 ```
 public class SignupRequest {
     private String username;
@@ -62,15 +65,15 @@ public class SignupRequest {
     private List<Authority> authorities;
 }
 ```
-```
-LoginRequest
 
+###### LoginRequest
+```
 public class LoginRequest {
     private String username;
     private String password;
 }
 ```
-ResponseToken
+###### ResponseToken
 ```
 public class ResponseToken {
     private String accessToken;
@@ -78,7 +81,7 @@ public class ResponseToken {
     private String expiresAt;
 }
 ```
-ValidInvalidTokenResponse
+###### ValidInvalidTokenResponse
 ```
 public class ValidInvalidTokenResponse {
     private String message;
