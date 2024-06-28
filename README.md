@@ -89,3 +89,56 @@ public class ValidInvalidTokenResponse {
     private boolean isAuthenticated;
 }
 ```
+
+
+# Task Management API
+
+This project is a Task Management API built with Spring Boot. The API allows users to add, retrieve, update, and delete tasks. 
+
+## Prerequisites
+
+- Java 11 or higher
+- Maven
+- Spring Boot
+- MySQL or any other supported database
+
+## Endpoints
+
+### Add a Task
+
+- **URL**: `https://authserver-mczz.onrender.com/authentication/add-task`
+- **Method**: `POST`
+- **Headers**:
+  - `Authorization: Bearer <your-token>`
+  - `Content-Type: application/json`
+- **Body**:
+  ```json
+  {
+    "task": "Complete project on reminder - 3"
+  }
+
+### Get All Tasks
+
+- **URL**: `https://authserver-mczz.onrender.com/authentication/get-task`
+- **Method**: `GET`
+- **Headers**:
+  - `Authorization: Bearer <your-token>`
+
+### Delete a Task
+
+- **URL**: `https://authserver-mczz.onrender.com/authentication/delete-task/{id}`
+- **Method**: `DELETE`
+- **Headers**:
+  - `Authorization: Bearer <your-token>`
+
+### Update a Task
+- **URL**: `https://authserver-mczz.onrender.com/authentication/update-task/{id}`
+- **Method**: `PUT`
+- **Headers**:
+  - `Authorization: Bearer <your-token>`
+  - `Content-Type: application/json`
+- **Body**:
+```json
+{
+  "task": "Complete project on reminder - 5"
+}
