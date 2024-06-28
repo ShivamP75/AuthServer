@@ -3,7 +3,7 @@ This document provides instructions on how to interact with the Authentication S
 
 #### Register User - To register a new user, send a POST request to /register endpoint with the following JSON payload:
 ``` 
-curl --location --request POST 'https://authserver-mczz.onrender.com/register' \
+curl --location --request POST 'https://authserver-mczz.onrender.com/authentication/register' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "username": "your_username",
@@ -23,7 +23,7 @@ curl --location --request POST 'https://authserver-mczz.onrender.com/register' \
 #### Get Authentication Token - To obtain an authentication token after registration, send a POST request to /get-token endpoint with the following JSON payload:
 
 ```
-curl --location --request POST 'https://authserver-mczz.onrender.com/get-token' \
+curl --location --request POST 'https://authserver-mczz.onrender.com/authentication/get-token' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "username": "your_username",
@@ -40,7 +40,7 @@ curl --location --request POST 'https://authserver-mczz.onrender.com/get-token' 
 
 #### Authenticate Using Token -To authenticate using the obtained token, send a GET request to /authenticate endpoint with the Authorization header containing the token:
 ```
-curl --location --request GET 'https://authserver-mczz.onrender.com/authenticate' \
+curl --location --request GET 'https://authserver-mczz.onrender.com/authentication/authenticate' \
 --header 'Authorization: Bearer your_token'
 ```
 
