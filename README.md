@@ -89,4 +89,3 @@ public class ValidInvalidTokenResponse {
     private boolean isAuthenticated;
 }
 ```
-
